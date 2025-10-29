@@ -1,0 +1,57 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Multimodal RAG — Demo UI</title>
+  <link rel="stylesheet" href="{% static 'ui_app/css/style.css' %}" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Multimodal RAG Bot</h1>
+      <p class="muted">Upload a PDF or Image → build embeddings → ask questions</p>
+    </header>
+
+    <section class="cards">
+      <div class="card">
+        <h2>Upload Document (PDF)</h2>
+        <form id="pdfForm">
+          <input type="file" id="pdfFile" accept="application/pdf" />
+          <div class="row">
+            <button type="button" id="uploadPdfBtn">Upload & Index</button>
+            <span id="pdfStatus" class="status"></span>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Upload Image</h2>
+        <form id="imgForm">
+          <input type="file" id="imgFile" accept="image/*" />
+          <div class="row">
+            <button type="button" id="uploadImgBtn">Upload & Index</button>
+            <span id="imgStatus" class="status"></span>
+          </div>
+        </form>
+      </div>
+
+      <div class="card wide">
+        <h2>Ask a question</h2>
+        <div class="row">
+          <input id="questionInput" placeholder="Ask about uploaded docs or images..." />
+          <button id="askBtn">Ask</button>
+        </div>
+        <div id="answerArea" class="answer"></div>
+      </div>
+    </section>
+
+    <footer>
+      <small>Backend: FastAPI (http://localhost:8001)</small>
+    </footer>
+  </div>
+
+  <script src="{% static 'ui_app/js/app.js' %}"></script>
+</body>
+</html>
